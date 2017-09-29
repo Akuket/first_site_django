@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<form action=" {%  url 'login' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Login</button>
+</form>
+
+<div>
+    <p>No account yet?  <a href="{% url 'register' %}">Sign in</a> </p>
+    <a href="{% url 'forgot' %}">Forgot your password?</a>
+
+</div>
+
+</body>
+</html>

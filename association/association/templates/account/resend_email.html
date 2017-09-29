@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <button type="submit">Validate</button>
+</form>
+
+
+<div>
+    <p>Not registered? <a href="{% url 'register' %}">Sign in</a> </p>
+</div>
+
+</body>
+</html>

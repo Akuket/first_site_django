@@ -1,0 +1,9 @@
+{% load i18n %}
+{% block email_content %}
+<p>{% trans "Hello " %} {{ name }},</p>
+<p>
+    {% blocktrans %}Please click on the link bellow to validate your registration{% endblocktrans %}.
+    <a href="{{ link_id }}"> Confirm my email address </a>
+
+</p>
+{% endblock email_content %}

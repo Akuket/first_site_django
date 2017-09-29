@@ -1,0 +1,6 @@
+ipython
+
+django-debug-toolbar>=1.6
+django-extensions
+
+
