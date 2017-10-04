@@ -7,13 +7,13 @@ from .models import User
 
 class UserAdminNew(UserAdmin):
     fieldsets = (
-        (None, {'fields': ('username', 'password',)}),
+        (None, {'fields': ('username', 'password', 'subscriber', 'subscription', 'product',)}),
         (_('Personal info'), {'fields': ('email',)}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
-    list_display = ('username', 'email', 'accreditation', 'is_staff')
+    list_display = ('username', 'email', 'accreditation', 'subscriber', 'subscription', 'product', 'is_staff')
 
 
 admin.site.register(User, UserAdminNew)

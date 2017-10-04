@@ -9,12 +9,12 @@
 <form action=" {%  url 'login' %}" method="post">
     {% csrf_token %}
     {{ form }}
-    <button type="submit">Login</button>
+    <button type="submit">Connection</button>
 </form>
 
 <div>
-    <p>No account yet?  <a href="{% url 'register' %}">Sign in</a> </p>
-    <a href="{% url 'forgot' %}">Forgot your password?</a>
+    <p>Pas encore de compte ?  <a href="{% url 'register' %}">Créer un compte</a> </p>
+    <a href="{% url 'forgot' %}">Mot de passe oublié ?</a>
 
 </div>
 

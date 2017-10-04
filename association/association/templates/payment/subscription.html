@@ -16,7 +16,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="{{ subscription.name }}ModalLabel">Products for {{ subscription.name }}</h5>
+                        <h5 class="modal-title" id="{{ subscription.name }}ModalLabel">Modalités de paiement pour l'abonnement {{ subscription.name }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -31,14 +31,14 @@
                                 <div class="card card-body">
                                     <div>
                                         <b>{{ product.informations }}</b>
-                                        <a class="btn btn-primary" href="{% url 'payment' subscription.name product.name %}">Process to payment</a>
+                                        <a class="btn btn-primary" href="{% url 'payment' subscription.name product.name %}">Procéder au paiement</a>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
                     </div>
                 </div>
             </div>

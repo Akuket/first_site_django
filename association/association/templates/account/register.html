@@ -9,12 +9,12 @@
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_ul }}
-    <button type="submit">Validate</button>
+    <button type="submit">Valider</button>
 </form>
 
 <div>
-    <p>Already registered?  <a href="{% url 'login' %}">Login</a></p>
-    <a href="{% url 'resend' %}">Resend a confirmation email</a>
+    <p>Déja membre ?  <a href="{% url 'login' %}">Connection</a></p>
+    <a href="{% url 'resend' %}">Renvoyer le mail de confirmation</a>
 </div>
 
 </body>

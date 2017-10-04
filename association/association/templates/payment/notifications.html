@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notifications</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+    <p>{{ request }}</p>
+
+    <a href="{% url 'subscriptions' %}">Redirect</a>
+
+{% endif %}
+</body>
+</html>

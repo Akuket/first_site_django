@@ -15,7 +15,7 @@ SECRET_KEY = '8gp9r2ose(9ck_s&vf($66*xl1qm_s9i97zsb4iys646qu27r2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['akuket.pythonanywhere.com',]
+ALLOWED_HOSTS = ['akuket.pythonanywhere.com']
 
 AUTH_USER_MODEL = 'account.User'
 

@@ -9,12 +9,12 @@
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_ul }}
-    <button type="submit">Validate</button>
+    <button type="submit">Valider</button>
 </form>
 
 
 <div>
-    <p>Not registered? <a href="{% url 'register' %}">Sign in</a> </p>
+    <p>Pas encore membre ? <a href="{% url 'register' %}">Créer un compte</a> </p>
 </div>
 
 </body>

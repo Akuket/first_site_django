@@ -6,13 +6,13 @@
 </head>
 <body>
 {% if request.user.is_authenticated %}
-    <p> Hello {{ request.user }}</p>
-    <a href="{%  url 'logout' %}">Logout</a>
-    <a href="{%  url 'change_password' %}">Update your password</a>
+    <p> Bonjour {{ request.user }}</p>
+    <a href="{%  url 'logout' %}">Déconnection</a>
+    <a href="{%  url 'change_password' %}">Mettre à jour votre mot de passe</a>
 {% else %}
-    <p> Please Sign in or Register</p>
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'register' %}">Sign in</a>
+    <p> Merci de vous connecter</p>
+    <a href="{% url 'login' %}">Connection</a>
+    <a href="{% url 'register' %}">Créer un compte</a>
 {% endif %}
 </body>
 </html>
