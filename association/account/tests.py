@@ -1,15 +1,12 @@
 from datetime import datetime, timedelta, time
 
-from .models import PaymentsUser
+from models import PaymentsUser
 
-today = datetime.now().date()
-tomorrow = today + timedelta(1)
-today_start = datetime.combine(today, time())
-today_end = datetime.combine(tomorrow, time())
 
-print(today)
-print(tomorrow)
+today_start = datetime.combine(datetime.now().date(), time())
+today_end = datetime.combine(datetime.now().date() + timedelta(1), time())
+
 print(today_start)
 print(today_end)
 
-print(PaymentsUser.objects.filter(start__lte=today_end, end__gte=today_start).order_by("-date"))
+e.PaymentsUser.objects.filter(date__range=(today_start, today_end))

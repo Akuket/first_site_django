@@ -123,6 +123,7 @@ class ChangePasswordView(PasswordChangeView):
         return HttpResponseRedirect(reverse_lazy(u"dashboard"))
 
 
+# If connected and no validate email only
 @accreditation_view_required(perm=0, strict=True, redirect_url=reverse_lazy(u"dashboard"))
 def validate(request, token):
     try:
@@ -134,8 +135,3 @@ def validate(request, token):
         user.accreditation = 1
         user.save()
     return HttpResponseRedirect(reverse_lazy(u"login"))
-
-
-# http://127.0.0.1:8000/account/validate/f2f5918c-4c79-46b0-acc3-67f703949713/
-
-# http://127.0.0.1:8000/account/reset_password/7a86ac95-99f2-4f99-90bd-32b845c7a46d/

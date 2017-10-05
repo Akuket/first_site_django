@@ -10,10 +10,10 @@ class ProductInLine(admin.TabularInline):
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'informations')
+    list_display = ('name', 'description')
     fieldsets = [
         (None,               {'fields': ['name']}),
-        ('informations', {'fields': ['informations']}),
+        ('description', {'fields': ['description']}),
     ]
     inlines = [ProductInLine]
 

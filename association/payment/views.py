@@ -1,17 +1,23 @@
 import payplug
-import datetime
-from django.http import HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
+from django.views.decorators.csrf import csrf_exempt
 
-from . api_payplug import Payment
-from . models import Subscription, Product
+from .api_payplug import classic_payment, update_user
+from .models import Subscription
 from account.api import accreditation_view_required
-from account.models import PaymentsUser
+from account.models import PaymentsUser, User
 
 
-@accreditation_view_required(redirect_url=reverse_lazy(u'login')) # si authentifié et email valide
+@accreditation_view_required(redirect_url=reverse_lazy(u'login'))  # If connected and and has a confirmed email address
 def subscription_view(request):
+    """
+    A view of all subscriptions available
+
+    :param request: Request object
+    :return: Render of the view
+    """
     template_name = "payment/subscription.html"
     subscriptions = Subscription.objects.all()
     return render(request, template_name, {
@@ -19,57 +25,65 @@ def subscription_view(request):
     })
 
 
-@accreditation_view_required(redirect_url=reverse_lazy(u'login'))  # si authentifié et email valide
+@accreditation_view_required(redirect_url=reverse_lazy(u'login'))  # If connected and and has a confirmed email address
 def payment_view(request, subscription, product):
-    # ne fonctionne pas sur une adresse locale
-    return_url = request.build_absolute_uri(reverse("notifications payplug"))
+    """
+    A view without template, which create the payment and redirect to Payplug's site
+
+    :param request: Request object
+    :param subscription: The subscription related to the payment
+    :param product: The product related to the payment
+    :return: Redirect to the Payplug's site or an error 404
+    """
+    # Only with online sites
+    return_url = request.build_absolute_uri(reverse("subscriptions"))
     cancel_url = request.build_absolute_uri(reverse("subscriptions"))
-    # ne fonctionne pas chez moi, surment du au firewall de pythonanywhere
-    # notification_url = request.build_absolute_uri(reverse("notifications payplug"))
+    notification_url = request.build_absolute_uri(reverse("notifications"))
     hosted_payment = {'return_url': return_url, 'cancel_url': cancel_url}
+
     subscription_object = Subscription.objects.get(name=subscription)
-    for products in subscription_object.products.all():
+
+    for products in subscription_object.products.all():  # Because many products for one subscription
         if products.name == product:
-            payment = Payment(request.user, subscription=subscription_object, product=products,
-                              payment_infos={'hosted_payment': hosted_payment})
-            return payment.redirect_payment()
+            return classic_payment(request.user, subscription=subscription_object, product=products, data={
+                'hosted_payment': hosted_payment,
+                'notification_url': notification_url,
+            })
     return HttpResponseNotFound('<h1>Http 404</h1>')
 
 
+@csrf_exempt  # Error without. Possible to improve it?
 def notifications_payplug_view(request):
-    # template_name = "payment/notifications.html"
-    date = datetime.date.today()
+    """
+    A view without template, which receive Payplug's response by the notification_url, for the state of the payment.
+    :param request: Request object
+    :return: Code http 200
+    """
+    status = None
     try:
-        payment_id = PaymentsUser.objects.filter(user=request.user).order_by("-date")[0]
-        payment = payplug.Payment.retrieve(payment_id.reference)
-        product = Product.objects.get(name=payment_id.product.name, subscription=payment_id.subscription)
+        response = payplug.notifications.treat(request.body)  # Full api provide by payplug to manage the response
     except payplug.exceptions.PayplugError as e:
         raise e
     else:
-        if payment.failure is not None:
-            return HttpResponseRedirect(reverse(u'payment_error', args={
-                "payment_id": payment_id
-            }))
-        if payment.is_paid == True:
-            request.user.accreditation = 2
-            request.user.subscription = payment_id.subscription.name
-            request.user.product = product.name
-            request.user.subscriber = date + datetime.timedelta(product.duration)
-            request.user.save()
-            return HttpResponseRedirect(reverse_lazy(u'dashboard'))
-    return HttpResponseRedirect(reverse_lazy(u'payment'))
+        user = User.objects.get(id=response.metadata["customer_id"])
+        payment = PaymentsUser.objects.get(reference=str(response.id))
 
+        if response.object == 'payment' and response.is_paid:  # Update user's subscription if the payment is done
+            status = "is_paid"
+            update_user(response=response, user=user, payment=payment)
 
-def error_view(request, payment_id):
-    payment = payplug.Payment.retrieve(payment_id.reference)
-    code_error, message_error = payment.failure.code, payment.failure.message
-    if code_error == 'card_declined' or 'processing_error' or \
-            'insufficient_funds' or 'incorrect_number':
-        return HttpResponseRedirect(payment.hosted_payment.payment_url)
-    elif code_error == 'aborted' or 'timeout':
-        return HttpResponseRedirect(reverse_lazy(u'payment'))
-    elif code_error == 'fraud_suspected':
-        return HttpResponseRedirect(reverse_lazy(u'logout'))
+        elif response.object == 'payment' and response.failure:  # An error is occurred
+            status = str(response.failure.code)
+            payment.error_message = str(response.failure.message)
+
+        elif response.object == 'refund':  # The refund method
+            pass
+
+        payment.status = status
+        payment.save()
+
+    return HttpResponse(200)
+
 
 
 

@@ -22,7 +22,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>{{ subscription.informations }}</p>
+                        <p>{{ subscription.description }}</p>
                         {% for product in subscription.products.all %}
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ product.pk }}Collapse" aria-expanded="false" aria-controls="{{ product.pk }}Collapse">
                             {{ product.name }}
@@ -30,7 +30,7 @@
                             <div class="collapse" id="{{ product.pk }}Collapse">
                                 <div class="card card-body">
                                     <div>
-                                        <b>{{ product.informations }}</b>
+                                        <b>{{ product.description }}</b>
                                         <a class="btn btn-primary" href="{% url 'payment' subscription.name product.name %}">Procéder au paiement</a>
                                     </div>
                                 </div>
