@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
-{% if request.user.is_authenticated %}
-    <p> Bonjour {{ request.user }}</p>
-    <a href="{%  url 'logout' %}">Déconnection</a>
-    <a href="{%  url 'change_password' %}">Mettre à jour votre mot de passe</a>
-{% else %}
-    <p> Merci de vous connecter</p>
-    <a href="{% url 'login' %}">Connection</a>
-    <a href="{% url 'register' %}">Créer un compte</a>
-{% endif %}
+    <div>
+        {% if request.user.is_authenticated %}
+            <p> Bonjour {{ request.user }}</p>
+            {% if request.user.is_staff %}
+                <div><a href="{%  url 'admin:index' %}">Administrer</a></div>
+            {% endif %}
+            <div><a href="{%  url 'subscriptions' %}">Souscrire un abonnement</a></div>
+            <div>
+                <a href="{%  url 'logout' %}">Déconnection</a>
+                <a href="{%  url 'change_password' %}">Mettre à jour votre mot de passe</a>
+            </div>
+        {% else %}
+            <div>
+                <p> Merci de vous connecter</p>
+                <a href="{% url 'login' %}">Connection</a>
+                <a href="{% url 'register' %}">Créer un compte</a>
+            </div>
+        {% endif %}
+    </div>
+
 </body>
 </html>

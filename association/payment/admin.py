@@ -7,6 +7,8 @@ from .models import Subscription
 class ProductInLine(admin.TabularInline):
     model = Product
     max_num = 3
+    readonly_fields = ('price', )
+
 
 
 class SubscriptionAdmin(admin.ModelAdmin):

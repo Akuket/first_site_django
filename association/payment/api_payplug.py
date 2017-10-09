@@ -1,13 +1,12 @@
 import payplug
 import datetime
-from django.http import HttpResponseRedirect
 
 from account.models import PaymentsUser, SaveCardUser, User
 
 payplug.set_secret_key('sk_test_5FVRtiAo2p1luWvHMmHa8z')
 
 
-def classic_payment(user, subscription, product, data=None):
+def create_classic_payment_url(user, subscription, product, data=None):
     """
     Create a classic payment with Payplug
 
@@ -15,12 +14,13 @@ def classic_payment(user, subscription, product, data=None):
     :param subscription: The subscription related to the payment
     :param product: The product related to the payment
     :param data: Optional parameter to complete the creation of the payment
-    :return: Redirect to Payplug site
+    :return: A redirect url to Payplug
     """
+    var = True if product.recurrent else False
     payment_data = {
         'amount': int(product.price * 100),  # In cents, 1 euro minimum
         'customer': {'email': str(user.email)},
-        'save_card': False,
+        'save_card': var,
         'currency': 'EUR',
         'metadata': {
             'customer_id': user.id,
@@ -30,36 +30,32 @@ def classic_payment(user, subscription, product, data=None):
     if data:
         payment_data.update(data)
 
+    duration = datetime.date.today() + datetime.timedelta(product.duration)
     payment = payplug.Payment.create(**payment_data)  # Create the payment object
-    payment_user = PaymentsUser(reference=str(payment.id), subscription=subscription, product=product, user=user)
+    payment_user = PaymentsUser(reference=str(payment.id), subscription=subscription, product=product, user=user,
+                                price=product.price, tva=product.tva, subscribed_until=duration)
     payment_user.save()
-    return HttpResponseRedirect(payment.hosted_payment.payment_url)  # redirect to Payplug's site
+    return payment.hosted_payment.payment_url
 
 
-def recursive_payment(user, subscription, product, data=None):
+def make_recurring_payment(user, data=None):
     """
     Create a recursive payment with Payplug
 
     :param user: The user related to the payment
-    :param subscription: The subscription related to the payment
-    :param product: The product related to the payment
     :param data: Optional parameter to complete the creation of the payment
     """
-    try:
-        card = SaveCardUser.objects.get(user=user, card_exp_date__gte=datetime.date.today(), card_available=True)
-    except SaveCardUser.DoesNotExist:
-        user.accreditation = 1
-        user.subscription = None
-        user.product = None
-        user.subscriber = None
-        user.save()
-    else:
+    card_object = user.get_last_validate_card()
+    product = user.get_product()
+    subscription = user.get_subscription()
+    if card_object is not None and product is not None and subscription is not None:
         payment_data = {
             'amount': int(product.price * 100),  # In cents, 1 euro minimum
-            'customer': {'email': str(user.email)},
-            'save_card': True,
+            'customer': {'email': str(user.email), 'first_name': str(card_object.first_name),
+                         'last_name': str(card_object.last_name)},
+            'save_card': False,
             'currency': 'EUR',
-            'payment_method': card.id,
+            'payment_method': str(card_object.card_id),
             'metadata': {
                 'customer_id': user.id,
             },
@@ -67,29 +63,34 @@ def recursive_payment(user, subscription, product, data=None):
 
         if data:
             payment_data.update(data)
-
+        duration = datetime.date.today() + datetime.timedelta(product.duration)
         payment = payplug.Payment.create(**payment_data)  # creation de l'object payment
-        payment_user = PaymentsUser(reference=str(payment.id), subscription=subscription, product=product, user=user)
+        payment_user = PaymentsUser(reference=str(payment.id), subscription=subscription, product=product, user=user,
+                                    price=product.price, tva=product.tva, subscribed_until=duration)
         payment_user.save()
 
 
-def update_user(response, user, payment):
+def find_recurring_payments():
+    today = datetime.date.today()
+    try:
+        for user in User.objects.filter(accreditation=2, payments__subscribed_until__date=today,
+                                        payments__product__recurrent=True):
+            make_recurring_payment(user)
+    except TypeError as e:
+        print(e)
+
+
+def update_user(response, user):
     """
     Update the user's accreditation on the site and save the card if needed
 
     :param response: An api provide by Payplug to manage the post response of the Payplug's site for the payment.
     :param user: The user related to the payment
-    :param payment: Data about the payment, stored in db. Refers to the model PaymentsUser
     """
     if response.save_card:  # Store the blank card in db
         save_card(response=response, user=user)
 
-    date = datetime.date.today()
-    user.accreditation = 2
-    user.subscription = payment.subscription.name
-    user.product = payment.product.name
-    user.subscriber = date + datetime.timedelta(payment.product.duration)
-    user.save()
+    user.set_accreditation(2)
 
 
 def save_card(response, user):
@@ -100,11 +101,14 @@ def save_card(response, user):
     :param user: The user related to the payment
     """
     try:
-        SaveCardUser.objects.get(card_id=response.card.id)
+        print(SaveCardUser.objects.get(card_id=response.card.id))
     except SaveCardUser.DoesNotExist:
+        first_name = response.customer.first_name
+        last_name = response.customer.last_name
         card_id = response.card.id
         card_exp_date = datetime.date(response.card.exp_year, response.card.exp_month, 30)
-        card = SaveCardUser(card_id=card_id, card_exp_date=card_exp_date, user=user)
+        card = SaveCardUser(first_name=first_name, last_name=last_name, card_id=card_id,
+                            card_exp_date=card_exp_date, user=user)
         card.save()
 
 
@@ -114,7 +118,5 @@ def checks():
     Check user's accreditation on the site, based on subscription duration
     """
     today = datetime.date.today()
-    SaveCardUser.objects.filter(card_available=True, card_exp_date__lt=today).update(card_available=False)
-
-    User.objects.filter(accreditation=2, subscriber__lt=today)\
-                .update(accrediation=1, subscriber=None, subscription=None, product=None)
+    SaveCardUser.objects.filter(card_available=True, card_exp_date__date__lt=today).update(card_available=False)
+    User.objects.filter(accreditation=2, payments__subscribed_until__date__lt=today).update(accreditation=1)

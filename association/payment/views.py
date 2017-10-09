@@ -1,10 +1,10 @@
 import payplug
-from django.http import HttpResponseNotFound, HttpResponse
+from django.http import HttpResponseNotFound, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 
-from .api_payplug import classic_payment, update_user
+from .api_payplug import create_classic_payment_url, update_user
 from .models import Subscription
 from account.api import accreditation_view_required
 from account.models import PaymentsUser, User
@@ -21,7 +21,7 @@ def subscription_view(request):
     template_name = "payment/subscription.html"
     subscriptions = Subscription.objects.all()
     return render(request, template_name, {
-        'subscriptions': subscriptions
+        'subscriptions': subscriptions,
     })
 
 
@@ -36,7 +36,7 @@ def payment_view(request, subscription, product):
     :return: Redirect to the Payplug's site or an error 404
     """
     # Only with online sites
-    return_url = request.build_absolute_uri(reverse("subscriptions"))
+    return_url = request.build_absolute_uri(reverse("status"))
     cancel_url = request.build_absolute_uri(reverse("subscriptions"))
     notification_url = request.build_absolute_uri(reverse("notifications"))
     hosted_payment = {'return_url': return_url, 'cancel_url': cancel_url}
@@ -45,10 +45,11 @@ def payment_view(request, subscription, product):
 
     for products in subscription_object.products.all():  # Because many products for one subscription
         if products.name == product:
-            return classic_payment(request.user, subscription=subscription_object, product=products, data={
+            url = create_classic_payment_url(request.user, subscription=subscription_object, product=products, data={
                 'hosted_payment': hosted_payment,
                 'notification_url': notification_url,
             })
+            return HttpResponseRedirect(url)
     return HttpResponseNotFound('<h1>Http 404</h1>')
 
 
@@ -70,7 +71,7 @@ def notifications_payplug_view(request):
 
         if response.object == 'payment' and response.is_paid:  # Update user's subscription if the payment is done
             status = "is_paid"
-            update_user(response=response, user=user, payment=payment)
+            update_user(response=response, user=user)
 
         elif response.object == 'payment' and response.failure:  # An error is occurred
             status = str(response.failure.code)
@@ -83,6 +84,16 @@ def notifications_payplug_view(request):
         payment.save()
 
     return HttpResponse(200)
+
+
+def response_view(request):
+    template_name = "payment/notifications.html"
+    payment = request.user.get_last_payment()
+    return render(request, template_name, {
+        'status': payment.status,
+        'error_message': payment.status,
+    })
+
 
 
 
