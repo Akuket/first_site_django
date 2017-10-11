@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Facture</title>
+    <style media="all" type="text/css">
+        td, p, h1, h3, a {
+            font-family: Helvetica, Arial, sans-serif;
+            color: #61696d;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<table style="background-color: #FFFFFF;" border="0" align="center" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            Nom de compte : {{ request.user.username }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Facture : {{ payment.reference }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Date de distribution : {% now "jS F Y H:i" %}
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-top: 30px;">
+            <div>Adresse de facturation :</div>
+            <div>{{ request.user.name }} {{ request.user.first_name }}</div>
+            <div>{{ request.user.address }}</div>
+            <div>{{ request.user.city }}, {{ request.user.postcode }}</div>
+            <div>{{ request.user.country }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-top: 30px;">
+            <div>Achat de l'abonnement {{ payment.subscription.name }}</div>
+            <div>Souscrit le {{ payment.date.date }}
+                {% if payment.product.recurrent %}
+                    pour une durée renouvelable tous les mois
+                {% else %}
+                    pour une durée de {{ payment.product.name }}
+                {% endif %}
+            </div>
+            <div>Prix HT: {{ payment.ht_cost }}€ TVA: {{ payment.tva }}</div>
+            <div>Prix TTC: {{ payment.price }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-top: 40px;">
+            <p style="font-size: 17px;">Ce document vous servira de reçu.</p>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

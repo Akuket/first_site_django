@@ -87,14 +87,15 @@ def notifications_payplug_view(request):
 
 
 def response_view(request):
+    """
+    A view for the payment's status
+
+    :param request: Request object
+    :return: Render of the view
+    """
     template_name = "payment/notifications.html"
     payment = request.user.get_last_payment()
     return render(request, template_name, {
         'status': payment.status,
         'error_message': payment.status,
     })
-
-
-
-
-

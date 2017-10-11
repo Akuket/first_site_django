@@ -8,16 +8,34 @@ from payment.models import Subscription, Product
 
 class User(AbstractUser):
     username = models.CharField(max_length=255, unique=True, verbose_name="Username")
+    address = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True)
+    first_name = models.CharField(max_length=255, null=True)
+    postcode = models.CharField(max_length=255, null=True)
+    city = models.CharField(max_length=255, null=True)
+    country = models.CharField(max_length=255, null=True)
     email = models.EmailField(unique=True, verbose_name="Email Address")
     accreditation = models.IntegerField(default=0, verbose_name="Accreditation")  # To manage rights on the site
     # payments = PaymentsUser(models.Model)
     # card = SaveCardUser(models.Model)
+
+    def test_any_payment_valide(self):
+        try:
+            return any(payment.status == "is_paid" for payment in self.get_all_payments())
+        except IndexError:
+            return None
+
+    def test_user_data(self):
+        return not self.address
 
     def get_last_payment(self):
         try:
             return self.payments.order_by("-date")[0]
         except IndexError:
             return None
+
+    def get_all_payments(self):
+        return self.payments.all()
 
     def get_last_validate_payment(self):
         try:
@@ -56,6 +74,16 @@ class User(AbstractUser):
             self.accreditation = lvl
             self.save()
 
+    def unsuscribe(self):
+        self.set_accreditation(1)
+        payment = self.get_last_validate_payment()
+        payment.status = "unsuscribe"
+        payment.save()
+        card = self.get_last_validate_payment()
+        if card is not None:
+            card.card_available = False
+            card.save()
+
 
 class ValidateUser(models.Model):
     token = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -82,6 +110,10 @@ class PaymentsUser(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="payments")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payments")
 
+    @property
+    def ht_cost(self):
+        return int(self.price / (1 + self.tva / 100))
+
 
 class SaveCardUser(models.Model):
     date = models.DateTimeField(auto_now=True)
@@ -91,7 +123,3 @@ class SaveCardUser(models.Model):
     card_exp_date = models.DateTimeField(editable=False)
     card_available = models.BooleanField(default=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="card")
-
-
-
-

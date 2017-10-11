@@ -1,14 +1,17 @@
 from django.contrib.auth.forms import SetPasswordForm
+from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView, FormView
-from django.urls import reverse, reverse_lazy
 from django.contrib import messages
-from django.contrib.auth.views import PasswordChangeView, LoginView
 from django.contrib.auth import login as auth_login
+from django.contrib.auth.views import PasswordChangeView, LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView, CreateView, FormView, ListView, DetailView
+from django.views.generic.edit import UpdateView
+from django_weasyprint import WeasyTemplateResponseMixin
 
 from .forms import CustomUserForm, ResendEmailForm, ForgotPasswordForm
-from .models import User, ValidateUser, ResetUserPassword
+from .models import User, ValidateUser, ResetUserPassword, PaymentsUser
 from .email import send_register_mail, send_reset_password_mail
 from .api import AnonymousRequiredMixin, accreditation_view_required
 
@@ -41,6 +44,16 @@ class RegisterView(AnonymousRequiredMixin, CreateView):
         link = self.request.build_absolute_uri(reverse("validate", kwargs={'token': validate_user.token}))
         send_register_mail(link, self.object.username, self.object.email, "test")
         return HttpResponseRedirect(self.get_success_url())
+
+
+class UpdateUserFields(LoginRequiredMixin, UpdateView):
+    model = User
+    fields = ['name', 'first_name', 'address','postcode','city','country','email',]
+    template_name = "account/update_user_fields.html"
+    success_url = reverse_lazy(u"dashboard")
+
+    def get_object(self):
+        return self.request.user
 
 
 class ResendEmailView(AnonymousRequiredMixin, FormView):
@@ -123,6 +136,21 @@ class ChangePasswordView(PasswordChangeView):
         return HttpResponseRedirect(reverse_lazy(u"dashboard"))
 
 
+class DisplayPayments(ListView):
+    template_name = "account/display_payments.html"
+    context_object_name = "payments"
+    paginate_by = 1
+
+    def get_queryset(self):
+        return self.request.user.get_all_payments()
+
+
+class DownloadPayment(WeasyTemplateResponseMixin, DetailView):
+    template_name = "payment/facture.html"
+    queryset = PaymentsUser.objects.all()
+    context_object_name = "payment"
+
+
 # If connected and no validate email only
 @accreditation_view_required(perm=0, strict=True, redirect_url=reverse_lazy(u"dashboard"))
 def validate(request, token):
@@ -135,3 +163,9 @@ def validate(request, token):
         user.accreditation = 1
         user.save()
     return HttpResponseRedirect(reverse_lazy(u"login"))
+
+
+@accreditation_view_required(perm=2, redirect_url=reverse_lazy(u"dashboard"))
+def unsuscribe(request):
+    request.user.unsuscribe()
+    return HttpResponseRedirect(reverse_lazy(u"logout"))
