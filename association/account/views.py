@@ -56,6 +56,10 @@ class UpdateUserFields(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
+class SeeUserData(TemplateView):
+    template_name = "account/personnal_info.html"
+
+
 class ResendEmailView(AnonymousRequiredMixin, FormView):
     form_class = ResendEmailForm
     template_name = "account/resend_email.html"

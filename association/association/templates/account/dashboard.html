@@ -23,6 +23,7 @@
          #modif:hover {
             color: #0056b3;
             text-decoration: underline;
+            cursor: pointer;
         }
 
         #modif:after{
@@ -48,7 +49,7 @@
                     </a>
                 </div>
             {% endif %}
-            <div><a href="{%  url 'update' %}">Mettre à jour mes informations personnelles</a></div>
+            <div><a href="{%  url 'personnal_info' %}">Mes informations personnelles</a></div>
             <div><a href="{%  url 'change_password' %}">Mettre à jour mon mot de passe</a></div>
             <div><a href="{%  url 'logout' %}">Déconnexion</a></div>
         {% else %}

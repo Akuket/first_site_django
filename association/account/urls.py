@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.contrib.auth.views import LogoutView
 
 from .views import DashboardView, RegisterView, ResendEmailView, ForgotPasswordView, validate, ResetPasswordView, \
-    ChangePasswordView, CustomLoginView, DisplayPayments, UpdateUserFields, DownloadPayment, unsuscribe
+    ChangePasswordView, CustomLoginView, DisplayPayments, UpdateUserFields, DownloadPayment, unsuscribe, SeeUserData
 
 urlpatterns = [
     url(r'^$', view=DashboardView.as_view(), name="dashboard"),
@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^logout/$', view=LogoutView.as_view(), name="logout"),
     url(r'^update/$', view=UpdateUserFields.as_view(), name="update"),
     url(r'^register/$', view=RegisterView.as_view(), name="register"),
+    url(r'^info/$', view=SeeUserData.as_view(), name="personnal_info"),
     url(r'^unsuscribe/$', view=unsuscribe, name="unsuscribe"),
     url(r'^validate/(?P<token>[0-9A-Fa-f-]+)/$', view=validate, name='validate'),
     url(r'^resend_validate/$', view=ResendEmailView.as_view(), name='resend'),

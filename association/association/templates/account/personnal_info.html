@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personnal info</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <style media="all" type="text/css">
+        td {
+            color: #61696d;
+            font-size: 20px;
+            font-family: Helvetica, Arial, sans-serif;
+            position: relative;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <table>
+            <tr>
+                <td>
+                    <div id="part1">
+                        <p>Username : {{ request.user.username }}</p>
+                        <p>Adresse email : {{ request.user.email }}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        {% if request.user.test_user_data is False %}
+        <table>
+            <tr>
+                <td style="padding-top: 30px;">
+                    <div id="part2">
+                        <p>Nom : {{ request.user.name }}</p>
+                        <p>Prénom : {{ request.user.first_name }}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td style="padding-top: 30px;">
+                    <div id="part3">
+                        <p>Adresse :</p>
+                        <p>{{ request.user.address }} {{ request.user.postcode }}</p>
+                        <p>{{ request.user.city }}</p>
+                        <p>{{ request.user.country }}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        {% endif %}
+    </tr>
+</table>
+<a href="{% url 'update' %}">Mettre à jour mes informations personnelles</a><br>
+<a href="{% url 'dashboard' %}">Retour</a>
+</body>
+
+</html>
