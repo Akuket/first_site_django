@@ -8,7 +8,8 @@ from django.urls import reverse
 
 from .views import notifications_payplug_view
 from .models import Subscription, Product
-from .api_payplug import create_classic_payment_url, find_recurring_payments, make_recurring_payment, checks
+from .api_payplug import (create_classic_payment, find_recurring_payments, make_recurring_payment, checks,
+                          PAID_PAYMENT_STATUS)
 from account.models import User, SaveCardUser
 
 Token = uuid.uuid4()  # Ensure transactions between us and payplug
@@ -81,6 +82,7 @@ class TestSubscriptionView(TestCase):
     """
         Tests of view.py --> subscription_view()
     """
+
     @classmethod
     def setUpTestData(cls):
         cls.user = User(username="guillaume", email="te@test.com", accreditation=1)
@@ -132,6 +134,7 @@ class TestPaymentView(TestCase):
     """
         Tests of view.py --> payment_view()
     """
+
     @classmethod
     def setUpTestData(cls):
         user = User(username="guillaume", email="te@test.com", accreditation=1)
@@ -142,7 +145,7 @@ class TestPaymentView(TestCase):
         cls.product = Product.objects.create(name="test", description="rien", price=120, tva=20, ht=100,
                                              recurrent=False, duration=50, subscription=cls.subscription)
 
-        cls.path = reverse(u"payment", kwargs={"subscription": cls.subscription, "product": cls.product})
+        cls.path = reverse(u"payment", kwargs={"subscription_name": cls.subscription, "product": cls.product})
 
     # Accreditation tests
 
@@ -166,19 +169,19 @@ class TestPaymentView(TestCase):
 
     def test_error_product(self):
         self.client.login(username="guillaume", password="passpass")
-        path = reverse(u"payment", kwargs={"subscription": self.subscription, "product": "other_name"})
+        path = reverse(u"payment", kwargs={"subscription_name": self.subscription, "product": "other_name"})
         response = self.client.get(path)
         self.assertEqual(response.status_code, 404)
 
     def test_error_subscription(self):
         self.client.login(username="guillaume", password="passpass")
-        path = reverse(u"payment", kwargs={"subscription": "other_name", "product": self.product})
+        path = reverse(u"payment", kwargs={"subscription_name": "other_name", "product": self.product})
         response = self.client.get(path)
         self.assertEqual(response.status_code, 404)
 
     def test_error_subscription_and_product(self):
         self.client.login(username="guillaume", password="passpass")
-        path = reverse(u"payment", kwargs={"subscription": "other_name", "product": "other_name"})
+        path = reverse(u"payment", kwargs={"subscription_name": "other_name", "product": "other_name"})
         response = self.client.get(path)
         self.assertEqual(response.status_code, 404)
 
@@ -187,6 +190,7 @@ class TestReturnUrl(TestCase):
     """
          Tests of view.py --> notifications_payplug_view()
     """
+
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.create(username="guillaume", email="test@test.com", password="passpass",
@@ -194,7 +198,7 @@ class TestReturnUrl(TestCase):
         subscription = Subscription.objects.create(name="gold", description="test")
         cls.product = Product.objects.create(name="test", description="rien", price=120, tva=20, ht=100,
                                              recurrent=False, duration=50, subscription=subscription)
-        create_classic_payment_url(user=cls.user, subscription=subscription, product=cls.product)
+        create_classic_payment(user=cls.user, subscription=subscription, product=cls.product)
         payment = cls.user.payments.all().order_by("-id")[0]
         payment.token = Token
         payment.save()
@@ -221,7 +225,7 @@ class TestReturnUrl(TestCase):
         payment.refresh_from_db()
 
         self.assertEqual(self.user.accreditation, 2)
-        self.assertEqual(payment.status, "is_paid")
+        self.assertEqual(payment.status, PAID_PAYMENT_STATUS)
         self.assertIs(payment.error_message, "")
 
     # Payment failure test due to an error when paying
@@ -271,8 +275,9 @@ class TestReturnUrl(TestCase):
         payment.refresh_from_db()
 
         self.assertEqual(self.user.accreditation, 1)
-        self.assertEqual(payment.status, "401")
-        self.assertEqual(payment.error_message, "Fraud_suspected")
+        self.assertEqual(payment.status, "Fraud_suspected")
+        self.assertEqual(payment.error_message,
+                         "Caution, the token provided not match with the token stored in data base")
 
     # Save card option tests
     # by creating a mock response of payplug.notifications.treat in the notification url
@@ -293,7 +298,7 @@ class TestReturnUrl(TestCase):
         card = self.user.card.order_by("-date")[0]
 
         self.assertEqual(self.user.accreditation, 2)
-        self.assertEqual(payment.status, "is_paid")
+        self.assertEqual(payment.status, PAID_PAYMENT_STATUS)
         self.assertIs(payment.error_message, "")
         self.assertEqual(card.first_name, "John")
         self.assertEqual(card.last_name, "Watson")
@@ -339,6 +344,7 @@ class TestResponseView(TestCase):
     """
          Tests of view.py --> response_view()
     """
+
     @classmethod
     def setUpTestData(cls):
         cls.user = User(username="guillaume", email="te@test.com", accreditation=1)
@@ -348,7 +354,7 @@ class TestResponseView(TestCase):
         subscription = Subscription.objects.create(name="gold", description="test")
         product = Product.objects.create(name="test", description="rien", price=120, tva=20, ht=100,
                                          recurrent=True, duration=50, subscription=subscription)
-        create_classic_payment_url(user=cls.user, subscription=subscription, product=product)
+        create_classic_payment(user=cls.user, subscription=subscription, product=product)
         payment = cls.user.payments.all().order_by("-id")[0]
         payment.token = Token
         payment.save()
@@ -406,6 +412,7 @@ class TestRecurringPayments(TestCase):
     """
        Tests of api_payplug.py --> find_recurring_payments() and make_recurring_payment()
     """
+
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.create(username="guillaume", email="test@test.com", password="passpass",
@@ -413,7 +420,7 @@ class TestRecurringPayments(TestCase):
         subscription = Subscription.objects.create(name="gold", description="test")
         cls.product = Product.objects.create(name="test", description="rien", price=120, tva=20, ht=100,
                                              recurrent=True, duration=50, subscription=subscription)
-        create_classic_payment_url(user=cls.user, subscription=subscription, product=cls.product)
+        create_classic_payment(user=cls.user, subscription=subscription, product=cls.product)
         payment = cls.user.payments.all().order_by("-id")[0]
         payment.token = Token
         payment.save()
@@ -522,6 +529,7 @@ class TestApiChecks(TestCase):
     """
         Tests of api_payplug.py --> chechs()
     """
+
     @classmethod
     def setUpTestData(cls):
         cls.user1 = User.objects.create(username="c", email="test@test.com", password="passpass", accreditation=2)
@@ -535,7 +543,7 @@ class TestApiChecks(TestCase):
     def create_payment(self, treat_mock, user=None, date=50):
         product = Product.objects.create(name="test", description="rien", price=120, tva=20, ht=100,
                                          recurrent=True, duration=date, subscription=self.subscription)
-        create_classic_payment_url(user=user, subscription=self.subscription, product=product)
+        create_classic_payment(user=user, subscription=self.subscription, product=product)
         self.payment = user.payments.all().order_by("-id")[0]
         self.payment.token = Token
         self.payment.save()

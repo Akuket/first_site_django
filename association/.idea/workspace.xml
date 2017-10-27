@@ -2,48 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="609d21f6-a9e5-4aec-8391-f32022157374" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/apps.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0002_auto_20170921_1109.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0003_paymentsuser.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0004_paymentsuser_subscription.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0005_auto_20171002_1617.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0006_auto_20171002_1711.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0007_user_product.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0008_auto_20171004_1636.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0009_savecarduser.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0010_auto_20171005_1000.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0011_auto_20171005_1359.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0012_auto_20171005_1820.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0013_savecarduser_date.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0014_auto_20171006_1503.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0015_auto_20171009_1153.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0016_auto_20171010_1200.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/0017_auto_20171010_1652.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/account/migrations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/apps.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0002_auto_20170929_0941.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0003_auto_20171002_1617.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0004_product_recurent.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0005_auto_20171005_1359.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0006_auto_20171005_1820.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0007_auto_20171009_1058.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/0008_auto_20171009_1153.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/payment/migrations/__init__.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/admin.py" afterPath="$PROJECT_DIR$/account/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/api.py" afterPath="$PROJECT_DIR$/account/api.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/payment/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/models.py" afterPath="$PROJECT_DIR$/account/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/tests.py" afterPath="$PROJECT_DIR$/account/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/urls.py" afterPath="$PROJECT_DIR$/account/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account/views.py" afterPath="$PROJECT_DIR$/account/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/association/settings.py" afterPath="$PROJECT_DIR$/association/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/association/templates/account/dashboard.html" afterPath="$PROJECT_DIR$/association/templates/account/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/association/templates/account/display_payments.html" afterPath="$PROJECT_DIR$/association/templates/account/display_payments.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/association/templates/payment/notifications.html" afterPath="$PROJECT_DIR$/association/templates/payment/notifications.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/payment/admin.py" afterPath="$PROJECT_DIR$/payment/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/payment/api_payplug.py" afterPath="$PROJECT_DIR$/payment/api_payplug.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/payment/tests.py" afterPath="$PROJECT_DIR$/payment/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/payment/urls.py" afterPath="$PROJECT_DIR$/payment/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/payment/views.py" afterPath="$PROJECT_DIR$/payment/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,7 +26,8 @@
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestCustomLoginView_test_post_superuser.coverage" NAME="Test: account.tests.TestCustomLoginView.test_post_superuser Coverage Results" MODIFIED="1508942710605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestDashboardView.coverage" NAME="Test: account.tests.TestDashboardView Coverage Results" MODIFIED="1508943042238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestValidate_test_post.coverage" NAME="Test: account.tests.TestValidate.test_post Coverage Results" MODIFIED="1509031609247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__account_tests.coverage" NAME="Test: account.tests Coverage Results" MODIFIED="1509096172754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__account_tests_TestGetLastValidateCard_test_invalid.coverage" NAME="Test: account.tests.TestGetLastValidateCard.test_invalid Coverage Results" MODIFIED="1509097142821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__account_tests.coverage" NAME="Test: account.tests Coverage Results" MODIFIED="1509113372204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestRecurringPayments_test_recurring_payment.coverage" NAME="Test: payment.tests.TestRecurringPayments.test_recurring_payment Coverage Results" MODIFIED="1508836609811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestRegisterView_test_get.coverage" NAME="Test: account.tests.TestRegisterView.test_get Coverage Results" MODIFIED="1508943235774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestApiChecks_create_payment.coverage" NAME="Test: payment.tests.TestApiChecks.create_payment Coverage Results" MODIFIED="1508857855981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -75,12 +40,12 @@
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestValidate_get_invalid.coverage" NAME="Test: account.tests.TestValidate.get_invalid Coverage Results" MODIFIED="1509032797180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestGetLastValidatePayment_test_valid_2_payments.coverage" NAME="Test: account.tests.TestGetLastValidatePayment.test_valid_2_payments Coverage Results" MODIFIED="1509096474246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestAccreditationViewRequiredDecorator_test_raise_exception_and_strict_with_no_accreditation.coverage" NAME="Test: account.tests.TestAccreditationViewRequiredDecorator.test_raise_exception_and_strict_with_no_accreditation Coverage Results" MODIFIED="1508935891663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestReturnUrl.coverage" NAME="Test: payment.tests.TestReturnUrl Coverage Results" MODIFIED="1508845842390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestReturnUrl.coverage" NAME="Test: payment.tests.TestReturnUrl Coverage Results" MODIFIED="1509113243505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestUpdateUserFields.coverage" NAME="Test: account.tests.TestUpdateUserFields Coverage Results" MODIFIED="1508946767033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView_test_error_accreditation_view.coverage" NAME="Test: payment.tests.TestPaymentView.test_error_accreditation_view Coverage Results" MODIFIED="1508766898118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView_test_error_accreditation_view.coverage" NAME="Test: payment.tests.TestPaymentView.test_error_accreditation_view Coverage Results" MODIFIED="1509112691743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestApiChecks_test_check_with_valid_subscription1.coverage" NAME="Test: payment.tests.TestApiChecks.test_check_with_valid_subscription1 Coverage Results" MODIFIED="1508858427188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestApiChecks.coverage" NAME="Test: payment.tests.TestApiChecks Coverage Results" MODIFIED="1508858681347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestRegisterView_test_post_valide.coverage" NAME="Test: account.tests.TestRegisterView.test_post_valide Coverage Results" MODIFIED="1508946115447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestApiChecks.coverage" NAME="Test: payment.tests.TestApiChecks Coverage Results" MODIFIED="1509113347345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestResponseView_test_validate_with_save_card.coverage" NAME="Test: payment.tests.TestResponseView.test_validate_with_save_card Coverage Results" MODIFIED="1508761465153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestSeeUserData_test_post.coverage" NAME="Test: account.tests.TestSeeUserData.test_post Coverage Results" MODIFIED="1508946949325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestResendEmailView_test_get.coverage" NAME="Test: account.tests.TestResendEmailView.test_get Coverage Results" MODIFIED="1509011943652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -101,19 +66,21 @@
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestAccreditationViewRequiredDecorator_test_decorator_raise_exception_no_accreditation.coverage" NAME="Test: account.tests.TestAccreditationViewRequiredDecorator.test_decorator_raise_exception_no_accreditation Coverage Results" MODIFIED="1508934202023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestUpdateUserFields_test_post_valid.coverage" NAME="Test: account.tests.TestUpdateUserFields.test_post_valid Coverage Results" MODIFIED="1508946761494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestForgotPasswordView_test_post_invalid.coverage" NAME="Test: account.tests.TestForgotPasswordView.test_post_invalid Coverage Results" MODIFIED="1509016970185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView_test_valid.coverage" NAME="Test: payment.tests.TestPaymentView.test_valid Coverage Results" MODIFIED="1508766056369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestUpdateUserFields_test_post_invalid.coverage" NAME="Test: account.tests.TestUpdateUserFields.test_post_invalid Coverage Results" MODIFIED="1508946479924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView_test_valid.coverage" NAME="Test: payment.tests.TestPaymentView.test_valid Coverage Results" MODIFIED="1509112451271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestResetPasswordView_test_post.coverage" NAME="Test: account.tests.TestResetPasswordView.test_post Coverage Results" MODIFIED="1509022364434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestDashboardView_test_post_args.coverage" NAME="Test: account.tests.TestDashboardView.test_post_args Coverage Results" MODIFIED="1508942785070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestGetLastValidatePayment_test_invalid.coverage" NAME="Test: account.tests.TestGetLastValidatePayment.test_invalid Coverage Results" MODIFIED="1509096491582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestAccreditationViewRequiredMixin_test_accreditation_required_mixin_with_accreditation_raise_exception.coverage" NAME="Test: account.tests.TestAccreditationViewRequiredMixin.test_accreditation_required_mixin_with_accreditation_raise_exception Coverage Results" MODIFIED="1508930619773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$first.coverage" NAME="first Coverage Results" MODIFIED="1509094352677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/python" />
+    <SUITE FILE_PATH="coverage/association$first.coverage" NAME="first Coverage Results" MODIFIED="1509114283737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/python" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestCustomLoginView.coverage" NAME="Test: account.tests.TestCustomLoginView Coverage Results" MODIFIED="1509017085726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestAccreditationViewRequiredMixin_test_accreditation_required_mixin_with_more_accreditation_raise_exception.coverage" NAME="Test: account.tests.TestAccreditationViewRequiredMixin.test_accreditation_required_mixin_with_more_accreditation_raise_exception Coverage Results" MODIFIED="1508930681231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestGetLastValidateCard_test_valid.coverage" NAME="Test: account.tests.TestGetLastValidateCard.test_valid Coverage Results" MODIFIED="1509096634895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestReturnUrl_setUpTestData.coverage" NAME="Test: payment.tests.TestReturnUrl.setUpTestData Coverage Results" MODIFIED="1508844820140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__account_tests_TestHtCost_test_basic.coverage" NAME="Test: account.tests.TestHtCost.test_basic Coverage Results" MODIFIED="1509097407581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$tests.coverage" NAME="tests Coverage Results" MODIFIED="1508857335076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/account" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestSeeUserData.coverage" NAME="Test: account.tests.TestSeeUserData Coverage Results" MODIFIED="1508946985698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__account_tests_TestGetLastValidateCard_test_valid_2_cards.coverage" NAME="Test: account.tests.TestGetLastValidateCard.test_valid_2_cards Coverage Results" MODIFIED="1509097081431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestValidate_test_get_no_args.coverage" NAME="Test: account.tests.TestValidate.test_get_no_args Coverage Results" MODIFIED="1509031525812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView_test_error_subscription_and_product.coverage" NAME="Test: payment.tests.TestPaymentView.test_error_subscription_and_product Coverage Results" MODIFIED="1508768787775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestDashboardView_test_get.coverage" NAME="Test: account.tests.TestDashboardView.test_get Coverage Results" MODIFIED="1508942077437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -129,9 +96,9 @@
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestApiChecks_test_invalid_save_card_user.coverage" NAME="Test: payment.tests.TestApiChecks.test_invalid_save_card_user Coverage Results" MODIFIED="1508853875494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestAccreditationViewRequiredMixin_test_accreditation_required_mixin_with_more_accreditation.coverage" NAME="Test: account.tests.TestAccreditationViewRequiredMixin.test_accreditation_required_mixin_with_more_accreditation Coverage Results" MODIFIED="1508926389467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestValidate_test_get.coverage" NAME="Test: account.tests.TestValidate.test_get Coverage Results" MODIFIED="1509031446155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView.coverage" NAME="Test: payment.tests.TestPaymentView Coverage Results" MODIFIED="1508845185798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView.coverage" NAME="Test: payment.tests.TestPaymentView Coverage Results" MODIFIED="1509113238375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestUserTestAnyPaymentValide_test_basic_valid.coverage" NAME="Test: account.tests.TestUserTestAnyPaymentValide.test_basic_valid Coverage Results" MODIFIED="1509095115696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestRecurringPayments.coverage" NAME="Test: payment.tests.TestRecurringPayments Coverage Results" MODIFIED="1508845231849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestRecurringPayments.coverage" NAME="Test: payment.tests.TestRecurringPayments Coverage Results" MODIFIED="1509113333952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestResendEmailView_test_post.coverage" NAME="Test: account.tests.TestResendEmailView.test_post Coverage Results" MODIFIED="1509012318471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestRecurringPayments_test_make_recurring_payment_with_data.coverage" NAME="Test: payment.tests.TestRecurringPayments.test_make_recurring_payment_with_data Coverage Results" MODIFIED="1508849906698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestChangePasswordView.coverage" NAME="Test: account.tests.TestChangePasswordView Coverage Results" MODIFIED="1509024494026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -143,8 +110,8 @@
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestGetLastPayment_test_valid.coverage" NAME="Test: account.tests.TestGetLastPayment.test_valid Coverage Results" MODIFIED="1509095778335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestDisplayPayments_test_get.coverage" NAME="Test: account.tests.TestDisplayPayments.test_get Coverage Results" MODIFIED="1509030434671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestForgotPasswordView_test_get.coverage" NAME="Test: account.tests.TestForgotPasswordView.test_get Coverage Results" MODIFIED="1509012759447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestSubscriptionView.coverage" NAME="Test: payment.tests.TestSubscriptionView Coverage Results" MODIFIED="1508845180479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestReturnUrl_test_error_token.coverage" NAME="Test: payment.tests.TestReturnUrl.test_error_token Coverage Results" MODIFIED="1508845834889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestSubscriptionView.coverage" NAME="Test: payment.tests.TestSubscriptionView Coverage Results" MODIFIED="1509113233936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestApiChecks_test_check_with_valid_subscription.coverage" NAME="Test: payment.tests.TestApiChecks.test_check_with_valid_subscription Coverage Results" MODIFIED="1508857894581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestResetPasswordView.coverage" NAME="Test: account.tests.TestResetPasswordView Coverage Results" MODIFIED="1509026020684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestForgotPasswordView_test_post.coverage" NAME="Test: account.tests.TestForgotPasswordView.test_post Coverage Results" MODIFIED="1509013998808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -157,7 +124,7 @@
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestApi_test_anonymous_required_mixin_with_login_user.coverage" NAME="Test: account.tests.TestApi.test_anonymous_required_mixin_with_login_user Coverage Results" MODIFIED="1508870974582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestSubscriptionView_test_no_product.coverage" NAME="Test: payment.tests.TestSubscriptionView.test_no_product Coverage Results" MODIFIED="1508763066652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestApiChecks_test_check_with_invalid_subscription.coverage" NAME="Test: payment.tests.TestApiChecks.test_check_with_invalid_subscription Coverage Results" MODIFIED="1508857960515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests.coverage" NAME="Test: payment.tests Coverage Results" MODIFIED="1508858711304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests.coverage" NAME="Test: payment.tests Coverage Results" MODIFIED="1509113999013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestRecurringPayments_test_find_recurring_payment.coverage" NAME="Test: payment.tests.TestRecurringPayments.test_find_recurring_payment Coverage Results" MODIFIED="1508850503396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestGetLastValidatePayment_test_valid.coverage" NAME="Test: account.tests.TestGetLastValidatePayment.test_valid Coverage Results" MODIFIED="1509096450799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestAccreditationViewRequiredMixin_test_accreditation_required_mixin_with_no_accreditation.coverage" NAME="Test: account.tests.TestAccreditationViewRequiredMixin.test_accreditation_required_mixin_with_no_accreditation Coverage Results" MODIFIED="1508926365113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -166,7 +133,7 @@
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestDashboardView_test_post.coverage" NAME="Test: account.tests.TestDashboardView.test_post Coverage Results" MODIFIED="1508942630515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestResetPasswordView_test_get.coverage" NAME="Test: account.tests.TestResetPasswordView.test_get Coverage Results" MODIFIED="1509019816248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__account_tests_TestChangePasswordView_test_get.coverage" NAME="Test: account.tests.TestChangePasswordView.test_get Coverage Results" MODIFIED="1509022567908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestResponseView.coverage" NAME="Test: payment.tests.TestResponseView Coverage Results" MODIFIED="1508845219405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestResponseView.coverage" NAME="Test: payment.tests.TestResponseView Coverage Results" MODIFIED="1509113266524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/association$Test__payment_tests_TestPaymentView_test_error_subscription.coverage" NAME="Test: payment.tests.TestPaymentView.test_error_subscription Coverage Results" MODIFIED="1508768735870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
@@ -174,24 +141,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="46" column="112" lean-forward="false" selection-start-line="46" selection-start-column="112" selection-end-line="46" selection-end-column="112" />
+            <state relative-caret-position="188">
+              <caret line="95" column="6" lean-forward="false" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="6" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/account/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="62" lean-forward="false" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -199,8 +154,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="157" column="65" lean-forward="true" selection-start-line="157" selection-start-column="65" selection-end-line="157" selection-end-column="65" />
+            <state relative-caret-position="341">
+              <caret line="146" column="48" lean-forward="true" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -208,12 +163,80 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/payment/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/payment/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="55" column="66" lean-forward="false" selection-start-line="55" selection-start-column="66" selection-end-line="55" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/payment/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/payment/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="557" column="8" lean-forward="true" selection-start-line="557" selection-start-column="8" selection-end-line="557" selection-end-column="60" />
+            <state relative-caret-position="1316">
+              <caret line="610" column="36" lean-forward="true" selection-start-line="610" selection-start-column="36" selection-end-line="610" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api_payplug.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/payment/api_payplug.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="166" column="0" lean-forward="true" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".coverage" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.coverage">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/payment/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -221,8 +244,8 @@
       <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="701" column="79" lean-forward="false" selection-start-line="701" selection-start-column="79" selection-end-line="701" selection-end-column="79" />
+            <state relative-caret-position="221">
+              <caret line="527" column="0" lean-forward="true" selection-start-line="527" selection-start-column="0" selection-end-line="527" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -255,6 +278,8 @@
       <find>allumette</find>
       <find>nbmatch</find>
       <find>affichage</find>
+      <find>&quot;is_paid&quot;</find>
+      <find>response</find>
     </findStrings>
     <replaceStrings>
       <replace>self.path</replace>
@@ -262,6 +287,7 @@
       <replace>match</replace>
       <replace>count_matches</replace>
       <replace>display</replace>
+      <replace>PAID_PAYMENT_STATUS</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -280,9 +306,6 @@
         <option value="$PROJECT_DIR$/association/templates/payment/notifications.html" />
         <option value="$PROJECT_DIR$/association/templates/payment/subscription.html" />
         <option value="$PROJECT_DIR$/payment/apps.py" />
-        <option value="$PROJECT_DIR$/payment/views.py" />
-        <option value="$PROJECT_DIR$/payment/api_payplug.py" />
-        <option value="$PROJECT_DIR$/payment/tests.py" />
         <option value="$PROJECT_DIR$/account/api.py" />
         <option value="$PROJECT_DIR$/.coverage" />
         <option value="$PROJECT_DIR$/.coveragerc" />
@@ -293,9 +316,14 @@
         <option value="$PROJECT_DIR$/account/urls.py" />
         <option value="$PROJECT_DIR$/association/templates/account/dashboard.html" />
         <option value="$PROJECT_DIR$/account/views.py" />
-        <option value="$USER_HOME$/python/first.py" />
         <option value="$PROJECT_DIR$/account/tests.py" />
         <option value="$PROJECT_DIR$/account/models.py" />
+        <option value="$PROJECT_DIR$/payment/config.py" />
+        <option value="$PROJECT_DIR$/payment/urls.py" />
+        <option value="$PROJECT_DIR$/payment/tests.py" />
+        <option value="$USER_HOME$/python/first.py" />
+        <option value="$PROJECT_DIR$/payment/api_payplug.py" />
+        <option value="$PROJECT_DIR$/payment/views.py" />
       </list>
     </option>
   </component>
@@ -306,10 +334,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="447" />
-    <option name="y" value="30" />
-    <option name="width" value="950" />
-    <option name="height" value="787" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -372,10 +398,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="coverage" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/python/first.py" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="SearchEverywhereHistoryKey" value="settings&#9;ACTION&#9;Database.Settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -395,7 +422,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django tests.Test: account.tests.TestGetLastValidateCard.test_valid">
+  <component name="RunManager" selected="Python.first">
     <configuration name="Test: account.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -415,7 +442,7 @@
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
     </configuration>
-    <configuration name="Test: account.tests.TestGetLastValidateCard.test_valid" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+    <configuration name="Test: payment.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -428,13 +455,13 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="association" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="account.tests.TestGetLastValidateCard.test_valid" />
+      <option name="TARGET" value="payment.tests" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
     </configuration>
-    <configuration name="Test: account.tests.TestGetLastValidatePayment.test_invalid" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+    <configuration name="Test: payment.tests.TestApiChecks" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -447,13 +474,13 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="association" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="account.tests.TestGetLastValidatePayment.test_invalid" />
+      <option name="TARGET" value="payment.tests.TestApiChecks" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
     </configuration>
-    <configuration name="Test: account.tests.TestGetLastValidatePayment.test_valid" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+    <configuration name="Test: payment.tests.TestRecurringPayments" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -466,26 +493,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="association" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="account.tests.TestGetLastValidatePayment.test_valid" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-    </configuration>
-    <configuration name="Test: account.tests.TestGetLastValidatePayment.test_valid_2_payments" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="association" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="account.tests.TestGetLastValidatePayment.test_valid_2_payments" />
+      <option name="TARGET" value="payment.tests.TestRecurringPayments" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -513,6 +521,24 @@
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
     </configuration>
+    <configuration name="first" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/python" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="association" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/python/first.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="online" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -539,19 +565,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Django server.online" />
       <item index="1" class="java.lang.String" itemvalue="Django server.association" />
-      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: account.tests" />
-      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidatePayment.test_valid" />
-      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidatePayment.test_valid_2_payments" />
-      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidatePayment.test_invalid" />
-      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidateCard.test_valid" />
+      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: payment.tests.TestRecurringPayments" />
+      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: payment.tests.TestApiChecks" />
+      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: payment.tests" />
+      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: account.tests" />
+      <item index="6" class="java.lang.String" itemvalue="Python.first" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidateCard.test_valid" />
-        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidatePayment.test_invalid" />
-        <item index="2" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidatePayment.test_valid_2_payments" />
-        <item index="3" class="java.lang.String" itemvalue="Django tests.Test: account.tests.TestGetLastValidatePayment.test_valid" />
-        <item index="4" class="java.lang.String" itemvalue="Django tests.Test: account.tests" />
+        <item index="0" class="java.lang.String" itemvalue="Python.first" />
+        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: payment.tests" />
+        <item index="2" class="java.lang.String" itemvalue="Django tests.Test: account.tests" />
+        <item index="3" class="java.lang.String" itemvalue="Django tests.Test: payment.tests.TestApiChecks" />
+        <item index="4" class="java.lang.String" itemvalue="Django tests.Test: payment.tests.TestRecurringPayments" />
       </list>
     </recent_temporary>
   </component>
@@ -572,35 +598,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test__account_tests - 2017.10.27 at 11h 22m 20s.xml">
+    <history-entry file="Test__account_tests - 2017.10.27 at 16h 09m 34s.xml">
       <configuration name="Test: account.tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests - 2017.10.27 at 11h 22m 55s.xml">
-      <configuration name="Test: account.tests" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests - 2017.10.27 at 16h 09m 18s.xml">
+      <configuration name="Test: payment.tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastPayment_test_valid_2_payments - 2017.10.27 at 11h 18m 42s.xml">
-      <configuration name="Test: account.tests.TestGetLastPayment.test_valid_2_payments" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests - 2017.10.27 at 16h 12m 45s.xml">
+      <configuration name="Test: payment.tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastPayment_test_valid_2_payments - 2017.10.27 at 11h 19m 47s.xml">
-      <configuration name="Test: account.tests.TestGetLastPayment.test_valid_2_payments" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests - 2017.10.27 at 16h 14m 38s.xml">
+      <configuration name="Test: payment.tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastPayment_test_valid_2_payments - 2017.10.27 at 11h 20m 39s.xml">
-      <configuration name="Test: account.tests.TestGetLastPayment.test_valid_2_payments" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests - 2017.10.27 at 16h 18m 14s.xml">
+      <configuration name="Test: payment.tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastPayment_test_valid_2_payments - 2017.10.27 at 11h 21m 04s.xml">
-      <configuration name="Test: account.tests.TestGetLastPayment.test_valid_2_payments" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests - 2017.10.27 at 16h 20m 03s.xml">
+      <configuration name="Test: payment.tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastValidateCard_test_valid - 2017.10.27 at 11h 30m 36s.xml">
-      <configuration name="Test: account.tests.TestGetLastValidateCard.test_valid" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests_TestApiChecks - 2017.10.27 at 16h 09m 09s.xml">
+      <configuration name="Test: payment.tests.TestApiChecks" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastValidatePayment_test_invalid - 2017.10.27 at 11h 28m 12s.xml">
-      <configuration name="Test: account.tests.TestGetLastValidatePayment.test_invalid" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests_TestRecurringPayments - 2017.10.27 at 16h 07m 56s.xml">
+      <configuration name="Test: payment.tests.TestRecurringPayments" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastValidatePayment_test_valid - 2017.10.27 at 11h 27m 32s.xml">
-      <configuration name="Test: account.tests.TestGetLastValidatePayment.test_valid" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests_TestRecurringPayments - 2017.10.27 at 16h 08m 57s.xml">
+      <configuration name="Test: payment.tests.TestRecurringPayments" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Test__account_tests_TestGetLastValidatePayment_test_valid_2_payments - 2017.10.27 at 11h 27m 55s.xml">
-      <configuration name="Test: account.tests.TestGetLastValidatePayment.test_valid_2_payments" configurationId="DjangoTestsConfigurationType" />
+    <history-entry file="Test__payment_tests_TestResponseView - 2017.10.27 at 16h 07m 48s.xml">
+      <configuration name="Test: payment.tests.TestResponseView" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -609,14 +635,14 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.50213444" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32861805" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1248666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15688367" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934713" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -636,7 +662,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.50213444" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32861805" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -656,6 +682,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -666,108 +702,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/account/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="45" column="46" lean-forward="false" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/settings/dev.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-168">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#14#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/settings/prod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/settings/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/association/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.5/unittest/loader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="145" column="19" lean-forward="false" selection-start-line="145" selection-start-column="19" selection-end-line="145" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../venv/lib/python3.5/site-packages/django/contrib/auth/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="117" column="4" lean-forward="false" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../venv/lib/python3.5/site-packages/django/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6303">
-          <caret line="64" column="6" lean-forward="false" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../venv/lib/python3.5/site-packages/django/forms/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="288" column="26" lean-forward="true" selection-start-line="288" selection-start-column="26" selection-end-line="288" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../venv/lib/python3.5/site-packages/django/http/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="480" column="8" lean-forward="false" selection-start-line="480" selection-start-column="8" selection-end-line="480" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///tmp/mozilla_guillaume0/test01.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="113" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/association/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -780,14 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="1055" column="8" lean-forward="false" selection-start-line="1055" selection-start-column="8" selection-end-line="1055" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/payment/api_payplug.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="109" column="58" lean-forward="true" selection-start-line="109" selection-start-column="58" selection-end-line="109" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1020,62 +946,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/account/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="50" column="4" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/payment/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="157" column="65" lean-forward="true" selection-start-line="157" selection-start-column="65" selection-end-line="157" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/python/first.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="66" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/payment/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="557" column="8" lean-forward="true" selection-start-line="557" selection-start-column="8" selection-end-line="557" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="701" column="79" lean-forward="false" selection-start-line="701" selection-start-column="79" selection-end-line="701" selection-end-column="79" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1086,11 +956,175 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../venv/lib/python3.5/site-packages/django/db/models/fields/related.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="791" column="8" lean-forward="false" selection-start-line="791" selection-start-column="8" selection-end-line="791" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_weasyprint/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="96" column="6" lean-forward="false" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="50" column="4" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.5/uuid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1567">
+          <caret line="105" column="8" lean-forward="false" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../venv/lib/python3.5/site-packages/django/contrib/auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="348" column="13" lean-forward="false" selection-start-line="348" selection-start-column="13" selection-end-line="348" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/account/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="46" column="112" lean-forward="false" selection-start-line="46" selection-start-column="112" selection-end-line="46" selection-end-column="112" />
+        <state relative-caret-position="188">
+          <caret line="95" column="6" lean-forward="false" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="146" column="48" lean-forward="true" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/association/templates/payment/facture.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/association/templates/payment/notifications.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/association/templates/payment/subscription.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="527" column="0" lean-forward="true" selection-start-line="527" selection-start-column="0" selection-end-line="527" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/python/first.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.coverage">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/api_payplug.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="166" column="0" lean-forward="true" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="55" column="66" lean-forward="false" selection-start-line="55" selection-start-column="66" selection-end-line="55" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1316">
+          <caret line="610" column="36" lean-forward="true" selection-start-line="610" selection-start-column="36" selection-end-line="610" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

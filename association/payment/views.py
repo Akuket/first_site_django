@@ -1,13 +1,13 @@
 import payplug
 from django.http import HttpResponseNotFound, HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 
-from .api_payplug import create_classic_payment_url, update_user
+from payment.models import Product
+from .api_payplug import create_classic_payment, update_payment
 from .models import Subscription
 from account.api import accreditation_view_required
-from account.models import PaymentsUser
 
 
 @accreditation_view_required(redirect_url=reverse_lazy(u'login'))  # If connected and and has a confirmed email address
@@ -26,34 +26,34 @@ def subscription_view(request):
 
 
 @accreditation_view_required(redirect_url=reverse_lazy(u'login'))  # If connected and and has a confirmed email address
-def payment_view(request, subscription, product):
+def payment_view(request, subscription_name, product):
     """
     A view without template, which create the payment and redirect to Payplug's site
 
     :param request: Request object
-    :param subscription: The subscription related to the payment
+    :param subscription_name: The subscription related to the payment
     :param product: The product related to the payment
     :return: Redirect to the Payplug's site or an error 404
     """
+    subscription = get_object_or_404(Subscription, name=subscription_name)
+
     # Only with online sites
     return_url = request.build_absolute_uri(reverse("status"))
     cancel_url = request.build_absolute_uri(reverse("subscriptions"))
     notification_url = request.build_absolute_uri(reverse("notifications"))
     hosted_payment = {'return_url': return_url, 'cancel_url': cancel_url}
 
+    # try/except 404
     try:
-        subscription_object = Subscription.objects.get(name=subscription)
-    except Subscription.DoesNotExist:
+        product = subscription.products.get(name=product)
+    except Product.DoesNotExist:
         return HttpResponseNotFound('<h1>Http 404</h1>')
 
-    for products in subscription_object.products.all():  # Because many products for one subscription
-        if products.name == product:
-            url = create_classic_payment_url(request.user, subscription=subscription_object, product=products, data={
-                'hosted_payment': hosted_payment,
-                'notification_url': notification_url,
-            })
-            return HttpResponseRedirect(url)
-    return HttpResponseNotFound('<h1>Http 404</h1>')
+    payment = create_classic_payment(request.user, subscription=subscription, product=product, data={
+        'hosted_payment': hosted_payment,
+        'notification_url': notification_url,
+    })
+    return HttpResponseRedirect(payment.hosted_payment.payment_url)
 
 
 @csrf_exempt  # Error without. Possible to improve it?
@@ -63,32 +63,12 @@ def notifications_payplug_view(request):
     :param request: Request object
     :return: Code http 200
     """
-    status = None
     try:
         response = payplug.notifications.treat(request.body)  # Full api provide by payplug to manage the response
     except payplug.exceptions.PayplugError:
         return HttpResponse(400)
     else:
-        payment = PaymentsUser.objects.get(reference=str(response.id))
-        if response.object == 'payment' and response.is_paid:  # Update user's subscription if the payment is done
-            if response.metadata["token"] == payment.token.hex:
-                status = "is_paid"
-                update_user(response=response, user=payment.user)
-
-            else:
-                status = str(401)
-                payment.error_message = str("Fraud_suspected")
-
-        elif response.object == 'payment' and response.failure:  # An error is occurred
-            status = str(response.failure.code)
-            payment.error_message = str(response.failure.message)
-
-        # elif response.object == 'refund':  # The refund method
-        #    pass
-
-        payment.status = status
-        payment.save()
-
+        update_payment(response)
     return HttpResponse(200)
 
 

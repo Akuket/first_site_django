@@ -1,13 +1,17 @@
-import payplug
 import datetime
 import uuid
 
+import payplug
+
 from account.models import PaymentsUser, SaveCardUser, User
+from .config import SECRET_KEY
 
-payplug.set_secret_key('sk_test_5FVRtiAo2p1luWvHMmHa8z')
+payplug.set_secret_key(SECRET_KEY)
+
+PAID_PAYMENT_STATUS = "is_paid"
 
 
-def create_classic_payment_url(user, subscription, product, data=None):
+def create_classic_payment(user, subscription, product, data=None):
     """
     Create a classic payment with Payplug
 
@@ -17,12 +21,15 @@ def create_classic_payment_url(user, subscription, product, data=None):
     :param data: Optional parameter to complete the creation of the payment
     :return: A redirect url to Payplug
     """
-    var = True if product.recurrent else False
     token = uuid.uuid4()
+    cents_price = 100 * product.price
+    if cents_price != int(cents_price):
+        raise ValueError("au centime pres")
+
     payment_data = {
-        'amount': int(product.price * 100),  # In cents, 1 euro minimum
+        'amount': int(cents_price),  # In cents, 1 euro minimum
         'customer': {'email': str(user.email)},
-        'save_card': var,
+        'save_card': product.recurrent,
         'currency': 'EUR',
         'metadata': {
             'token': token.hex,
@@ -31,12 +38,12 @@ def create_classic_payment_url(user, subscription, product, data=None):
     if data:
         payment_data.update(data)
 
-    duration = datetime.date.today() + datetime.timedelta(product.duration)
+    subscribed_until = datetime.date.today() + datetime.timedelta(product.duration)
     payment = payplug.Payment.create(**payment_data)  # Create the payment object
     payment_user = PaymentsUser(reference=str(payment.id), subscription=subscription, product=product, user=user,
-                                price=product.price, tva=product.tva, subscribed_until=duration, token=token)
+                                price=product.price, tva=product.tva, subscribed_until=subscribed_until, token=token)
     payment_user.save()
-    return payment.hosted_payment.payment_url
+    return payment
 
 
 def make_recurring_payment(user, data=None):
@@ -52,13 +59,17 @@ def make_recurring_payment(user, data=None):
     token = uuid.uuid4()
 
     if card_object is not None and product is not None and subscription is not None:
+        cents_price = 100 * product.price
+        if cents_price != int(cents_price):
+            raise ValueError("au centime pres")
+
         payment_data = {
-            'amount': int(product.price * 100),  # In cents, 1 euro minimum
+            'amount': int(cents_price),  # In cents, 1 euro minimum
             'customer': {'email': str(user.email), 'first_name': str(card_object.first_name),
                          'last_name': str(card_object.last_name)},
             'save_card': False,
             'currency': 'EUR',
-            'payment_method': str(card_object.card_id),
+            'payment_method': str(card_object.card_id),  # Important to make a recurring payment
             'metadata': {
                 'token': token.hex,
             },
@@ -76,25 +87,42 @@ def make_recurring_payment(user, data=None):
             payment_user.save()
 
 
-def find_recurring_payments():
-    today = datetime.date.today()
-    try:
-        for user in User.objects.filter(accreditation=2, payments__subscribed_until=today,
-                                        payments__product__recurrent=True):
-            make_recurring_payment(user)
-    except TypeError:
-        pass
+def update_payment(payment_object):
+    """
+    Update the payment next to the post of Payplug on the notification url
+    :param payment_object: Response provide by Payplug
+    """
+    status = None
+    payment = PaymentsUser.objects.get(reference=str(payment_object.id))
+    if payment_object.object == 'payment' and payment_object.is_paid:  # Update user's subscription if the payment is done
+        if payment_object.metadata["token"] == payment.token.hex:
+            status = PAID_PAYMENT_STATUS
+            update_user(payment_object=payment_object, user=payment.user)
+
+        else:
+            status = "Fraud_suspected"
+            payment.error_message = "Caution, the token provided not match with the token stored in data base"
+
+    elif payment_object.object == 'payment' and payment_object.failure:  # An error is occurred
+        status = str(payment_object.failure.code)
+        payment.error_message = str(payment_object.failure.message)
+
+    # elif response.object == 'refund':  # The refund method
+    #    pass
+
+    payment.status = status
+    payment.save()
 
 
-def update_user(response, user):
+def update_user(payment_object, user):
     """
     Update the user's accreditation on the site and save the card if needed
 
-    :param response: An api provide by Payplug to manage the post response of the Payplug's site for the payment.
+    :param payment_object: An api provide by Payplug to manage the post response of the Payplug's site for the payment.
     :param user: The user related to the payment
     """
-    if response.save_card:  # Store the blank card in db
-        save_card(response=response, user=user)
+    if payment_object.save_card:  # Store the blank card in db
+        save_card(response=payment_object, user=user)
 
     user.set_accreditation(2)
 
@@ -116,6 +144,16 @@ def save_card(response, user):
         card = SaveCardUser(first_name=first_name, last_name=last_name, card_id=card_id,
                             card_exp_date=card_exp_date, user=user)
         card.save()
+
+
+def find_recurring_payments():
+    today = datetime.date.today()
+    try:
+        for user in User.objects.filter(accreditation=2, payments__subscribed_until=today,
+                                        payments__product__recurrent=True):
+            make_recurring_payment(user)
+    except TypeError:
+        pass
 
 
 def checks():
