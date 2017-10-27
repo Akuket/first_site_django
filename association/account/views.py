@@ -1,8 +1,7 @@
 from django.contrib.auth.forms import SetPasswordForm
+from django.core.exceptions import ValidationError
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.views import PasswordChangeView, LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -48,7 +47,7 @@ class RegisterView(AnonymousRequiredMixin, CreateView):
 
 class UpdateUserFields(LoginRequiredMixin, UpdateView):
     model = User
-    fields = ['name', 'first_name', 'address','postcode','city','country','email',]
+    fields = ['name', 'first_name', 'address', 'postcode', 'city', 'country', 'email', ]
     template_name = "account/update_user_fields.html"
     success_url = reverse_lazy(u"dashboard")
 
@@ -56,7 +55,7 @@ class UpdateUserFields(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
-class SeeUserData(TemplateView):
+class SeeUserData(LoginRequiredMixin, TemplateView):
     template_name = "account/personnal_info.html"
 
 
@@ -87,7 +86,7 @@ class ForgotPasswordView(AnonymousRequiredMixin, FormView):
             user1 = User.objects.get(username=form.cleaned_data["username"])
             user2 = User.objects.get(email=form.cleaned_data["email"])
         except(KeyError, User.DoesNotExist):
-            messages.error(self.request, 'Please correct the error below.')
+            pass
         else:
             if user1 == user2:
                 resend = ResetUserPassword(user=user1)
@@ -95,13 +94,10 @@ class ForgotPasswordView(AnonymousRequiredMixin, FormView):
                 link = self.request.build_absolute_uri(reverse("reset_password", kwargs={'token': resend.token}))
                 send_reset_password_mail(link, user1.username, user1.email, "test")
                 return HttpResponseRedirect(self.get_success_url())
-            else:
-                messages.error(self.request, 'Please correct the error below.')
-
-        return render(self.request, reverse_lazy(u"forgot"))
+        return HttpResponseRedirect(reverse_lazy(u"forgot"))
 
 
-class ResetPasswordView(FormView):
+class ResetPasswordView(AnonymousRequiredMixin, FormView):
     form_class = SetPasswordForm
     template_name = "account/forgot_password.html"
     success_url = reverse_lazy(u"login")
@@ -110,7 +106,7 @@ class ResetPasswordView(FormView):
         """
         Returns the keyword arguments for instantiating the form.
         """
-        kwargs = super(ResetPasswordView, self).get_form_kwargs()
+        kwargs = super().get_form_kwargs()
         kwargs["user"] = self.user
         return kwargs
 
@@ -119,19 +115,18 @@ class ResetPasswordView(FormView):
             token = kwargs["token"]
             try:
                 self.user = ResetUserPassword.objects.get(token=token).user
-            except(KeyError, ResetUserPassword.DoesNotExist):
+            except(KeyError, ResetUserPassword.DoesNotExist, ValidationError):
                 return HttpResponseRedirect(reverse_lazy(u"dashboard"))
             else:
-                return super(ResetPasswordView, self).dispatch(request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse_lazy(u"dashboard"))
+                return super().dispatch(request, *args, **kwargs)
+        return HttpResponseRedirect(reverse_lazy(u"dashboard"))
 
     def form_valid(self, form):
         self.object = form.save()
         return HttpResponseRedirect(reverse_lazy(u"login"))
 
 
-class ChangePasswordView(PasswordChangeView):
+class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
     template_name = "account/change_password.html"
     success_url = reverse_lazy(u"dashboard")
 
@@ -140,16 +135,16 @@ class ChangePasswordView(PasswordChangeView):
         return HttpResponseRedirect(reverse_lazy(u"dashboard"))
 
 
-class DisplayPayments(ListView):
+class DisplayPayments(LoginRequiredMixin, ListView):
     template_name = "account/display_payments.html"
     context_object_name = "payments"
     paginate_by = 1
 
     def get_queryset(self):
-        return self.request.user.get_all_payments()
+        return self.request.user.get_all_payments().order_by("-date")
 
 
-class DownloadPayment(WeasyTemplateResponseMixin, DetailView):
+class DownloadPayment(LoginRequiredMixin, WeasyTemplateResponseMixin, DetailView):
     template_name = "payment/facture.html"
     queryset = PaymentsUser.objects.all()
     context_object_name = "payment"
@@ -160,7 +155,7 @@ class DownloadPayment(WeasyTemplateResponseMixin, DetailView):
 def validate(request, token):
     try:
         validate_user = ValidateUser.objects.get(token=token)
-    except(KeyError, ValidateUser.DoesNotExist):
+    except(KeyError, ValidateUser.DoesNotExist, ValidationError):
         return HttpResponseRedirect(reverse_lazy(u"dashboard"))
     else:
         user = validate_user.user
@@ -170,6 +165,6 @@ def validate(request, token):
 
 
 @accreditation_view_required(perm=2, redirect_url=reverse_lazy(u"dashboard"))
-def unsuscribe(request):
+def unsubscribe(request):
     request.user.unsuscribe()
     return HttpResponseRedirect(reverse_lazy(u"logout"))

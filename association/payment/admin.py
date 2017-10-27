@@ -10,7 +10,6 @@ class ProductInLine(admin.TabularInline):
     readonly_fields = ('price', )
 
 
-
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
     fieldsets = [

@@ -11,12 +11,12 @@ class AnonymousRequiredMixin(object):
     """
     CBV mixin which verifies that the current user is Anonymous.
     """
-    authenticated_redirect_url = DEFAULT_PAGE
+    __authenticated_redirect_url = DEFAULT_PAGE
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return HttpResponseRedirect(resolve_url(self.authenticated_redirect_url))
-        return super(AnonymousRequiredMixin, self).dispatch(request, *args, **kwargs)
+            return HttpResponseRedirect(resolve_url(self.__authenticated_redirect_url))
+        return super().dispatch(request, *args, **kwargs)
 
 
 class AccreditationViewRequiredMixin(LoginRequiredMixin):
@@ -25,16 +25,16 @@ class AccreditationViewRequiredMixin(LoginRequiredMixin):
     """
     accreditation = 1
     strict = False
-    redirect_url = DEFAULT_PAGE
+    __redirect_url = DEFAULT_PAGE
     raise_exception = False
 
-    def has_accreditation(self):
+    def has_accreditation(self, request):
         """
         Customized method that checks the accreditation.
         """
-        if self.strict and self.request.user.accreditation == self.accreditation:
+        if self.strict and request.user.accreditation == self.accreditation:
             return True
-        elif not self.strict and self.request.user.accreditation >= self.accreditation:
+        elif not self.strict and request.user.accreditation >= self.accreditation:
             return True
         # In case the 403 handler should be called raise the exception
         if self.raise_exception:
@@ -43,9 +43,9 @@ class AccreditationViewRequiredMixin(LoginRequiredMixin):
         return False
 
     def dispatch(self, request, *args, **kwargs):
-        if not self.has_accreditation():
-            return HttpResponseRedirect(resolve_url(self.redirect_url))
-        return super(AccreditationViewRequiredMixin, self).dispatch(request, *args, **kwargs)
+        if not self.has_accreditation(request):
+            return HttpResponseRedirect(resolve_url(self.__redirect_url))
+        return super().dispatch(request, *args, **kwargs)
 
 
 def accreditation_view_required(perm=1, strict=False, redirect_url=None, raise_exception=False):

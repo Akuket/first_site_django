@@ -6,21 +6,21 @@ from .models import User, PaymentsUser
 
 
 class SubTest(admin.TabularInline):
-        model = PaymentsUser
+    model = PaymentsUser
 
-        extra = 0
-        max_num = 10
-        exclude = ["error_message"]
-        readonly_fields = ('price', 'tva', 'subscription', 'product', 'status', )
+    extra = 0
+    max_num = 10
+    exclude = ["error_message"]
+    readonly_fields = ('price', 'tva', 'subscription', 'product', 'status',)
 
 
 class UserAdminNew(UserAdmin):
     fieldsets = (
-        (_('Personal info'), {'fields': ('username', 'password', 'email','last_login', 'date_joined')}),
+        (_('Personal info'), {'fields': ('username', 'password', 'email', 'last_login', 'date_joined')}),
         (_('Permissions'), {
-            'classes': ('collapse', ),
+            'classes': ('collapse',),
             'fields': ('is_active', 'is_staff', 'is_superuser',
-                                       'groups', 'user_permissions', "accreditation")}),
+                       'groups', 'user_permissions', "accreditation")}),
     )
     list_display = ('username', 'email', 'subscription', 'product', 'subscribed_until', 'accreditation', 'is_staff')
 
@@ -43,7 +43,7 @@ class UserAdminNew(UserAdmin):
     def subscribed_until(self, user):
         payment = user.get_last_validate_payment()
         if payment is not None:
-            payment = payment.subscribed_until.date()
+            payment = payment.subscribed_until
             return payment
         return None
 
